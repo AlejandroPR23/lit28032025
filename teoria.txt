@@ -1,0 +1,9 @@
+Una vez que el navegador termina de interpretar el HTMl forma un arbol de nodos, que son el html head body main y demás elementos
+
+El DOM se puede entender como una web api que nos da el navegado,  existen 2 tipos de objetos, el DOM y el window object que es la pantalla del navegador donde se encuentra el DOM
+
+En los eventos el ciclo es:
+
+-Capturing (se captura el evento en el window antes de que el usuario de click o haga su acción)
+-Target (elemento que se usara como targeteable)
+-Bubbling ( el evento vuelve a subir al window)

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <template id="template">
+        <h1>Hola desde el template</h1>
+        <p>Renderiza</p>
+   </template>
+   <template id="lista">
+        <li>
+            <span>Hola:</span>
+            <span></span>
+        </li>
+   </template>
+   <ul id="ul">
+
+   </ul>
+   <script>
+        const template  = document.querySelector('#template');
+        const templateClone = document.importNode(template.content, true);
+        
+        document.body.appendChild(templateClone);
+
+        const Names = ['T','Na','😐','❤️','👻'];
+        const NamesTemplate = document.querySelector('#lista');
+
+
+        Names.forEach((nombre) => {
+            const templateClone = document.importNode(NamesTemplate.content, true);
+            templateClone.querySelectorAll('span')[1].innerText = nombre;
+            ul.appendChild(templateClone);
+        });
+   </script>
+</body>
+</html>

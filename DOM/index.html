@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica DOM</title>
+    <style>
+        .destacado {
+            color: rgb(255, 253, 253);
+            font-weight: bold;
+        }
+        .visible{
+            display: block;
+        }
+        .invisible{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Bienvenido a la práctica del DOM</h1>
+
+    <p class="descripcion">Este es un párrafo con clase "descripcion".</p>
+    <p class="descripcion">Otro párrafo con la misma clase.</p>
+
+    <ul id="lista">
+        <li class="item">Elemento 1</li>
+        <li class="item">Elemento 2</li>
+        <li class="item">Elemento 3</li>
+    </ul>
+
+    <div>
+        <button id="boton">Haz clic aquí</button>
+    </div>
+
+    <form id="formulario">
+        <input type="text" name="nombre" value="nombre" placeholder="Escribe tu nombre">
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        // Obtener y acceder a nodos
+        document.getElementById('titulo');
+        document.querySelector('#titulo');
+        document.querySelector('p');
+        document.getElementsByClassName("item");
+        document.getElementsByTagName("p");
+        document.querySelectorAll(".item");
+
+        // Navegar entre nodos
+        const parent = document.getElementById('lista');
+        console.log(parent);
+
+        const children = parent.children;
+        console.log(children);
+
+        const firstChild = parent.firstChild;
+
+        const lastChild = parent.lastChild;
+
+        const previousSibling = parent.previousElementSibling;
+
+        const nextSibling = parent.nextElementSibling;
+
+        const childrenDos = document.querySelector('li');
+
+        const parentDos = childrenDos.parentNode;
+
+        const grandParent = childrenDos.parentElement;
+
+        // Editar atributos
+        const input = document.querySelector('input');
+        input.value = "Jorge el Curioso";
+        input.minLength = "6";
+        input.maxLength = "8";
+
+
+        // Modificando texto en HTML
+
+        const title = document.querySelector('#titulo');
+        title.innerText = "Ya no hay agua 🍰"
+
+        // Modificando estilos
+        
+        title.style.color = "red";
+
+        const menu = document.querySelector('lista');
+
+        lista.style.backgroundColor = "gray";
+        lista.style.fontSize = "25px";
+
+        lista.className = "destacado";
+
+        // Modificando la visibilidad
+
+        const button = document.querySelector('button');
+
+        button.addEventListener('click', () => {
+            lista.classList.toggle('invisible');
+            lista.contain('invisible');
+        })
+
+        // Creación elementos con HTML  Strings e insertAdjacentElement()
+
+        const contentArea = document.getElementById('lista');
+
+        contentArea.insertAdjacentHTML('beforeend', '<p> Trolorelo Tralala 🦉🐦 </p>');
+        contentArea.insertAdjacentHTML('beforeend', '<p> 🐙🐙🐙🐙🐙</p>');
+        contentArea.insertAdjacentHTML('beforebegin', '<h1> 🕊️🕊️🦃🐓🦅</h1>');
+        contentArea.insertAdjacentHTML('afterbegin', '<h2> 🐕‍🦺🐕‍🦺🐕‍🦺🐕‍🦺</h2>');
+        contentArea.insertAdjacentHTML('afterend', '<h1> 🐎🐎🐎🐎</h1>');
+
+        // Agregando elementos con HTML  Strings e insertAdjacentElement()
+
+        contentArea.innerHTML += "<li> Elemento 🐷🐨🐼</li>";
+        contentArea.insertAdjacentHTML('beforeend', '<li> Whasaaaa 👻👻 </li>');
+
+        // Crear elementos createElement()
+
+        const newPElement = document.createElement('p');
+        newPElement.textContent = 'Fui creado con createElement 🦧';
+
+        const newH1Element = document.createElement('h1');
+        newH1Element.textContent = "🐘🐘🐘🐘🐘"
+
+        contentArea.append(newPElement);
+        contentArea.prepend(newH1Element);
+        contentArea.before(newPElement);
+        contentArea.after(newH1Element);
+
+        // Remover elementos  con remove() o removeChild()
+
+        newH1Element.remove();
+        contentArea.removeChild(contentArea.lastElementChild);
+
+        // Clonación y reemplazo de elementos con cloneNode y replaceChild
+
+        const clonNode = newPElement.cloneNode(true);
+        const itemToReplace = contentArea.children[2];
+        clonNode.style.backgroundColor = "green";
+        clonNode.innerText = "🦖🦖🦖🦖";
+        contentArea.append(clonNode);
+        itemToReplace.replaceWith(clonNode);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de Eventos JavaScript</title>
+    <style>
+       
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        div, button, input, select, textarea, form {
+            margin-bottom: 15px;
+        }
+        .caja-eventos {
+            border: 2px solid steelblue;
+            padding: 20px;
+            min-height: 50px;
+            background-color: #f0f8ff;
+            cursor: pointer; 
+        }
+        #area-output {
+            margin-top: 20px;
+            border: 1px dashed grey;
+            padding: 10px;
+            min-height: 100px;
+            background-color: #f9f9f9;
+            white-space: pre-wrap; 
+        }
+        label {
+            display: block; 
+            margin-bottom: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        input[type="text"], textarea, select {
+             padding: 8px;
+             width: 250px;
+        }
+        textarea {
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Práctica de Eventos JavaScript</h1>
+
+    <hr>
+
+    <h2>Eventos de Ratón</h2>
+    <button id="miBoton">Haz Clic Aquí</button>
+    <div id="miDiv" class="caja-eventos">
+        Pasa el ratón sobre mí o haz doble clic.
+    </div>
+
+    <hr>
+
+    <h2>Eventos de Teclado</h2>
+    <label for="miInputTexto">Escribe algo aquí:</label>
+    <input type="text" id="miInputTexto" placeholder="Prueba keydown, keyup...">
+
+    <hr>
+
+    <h2>Eventos de Formulario</h2>
+    <form id="miFormulario">
+        <label for="miSelect">Selecciona una opción:</label>
+        <select id="miSelect">
+            <option value="">--Elige--</option>
+            <option value="opcion1">Opción 1</option>
+            <option value="opcion2">Opción 2</option>
+            <option value="opcion3">Opción 3</option>
+        </select>
+
+        <br>
+
+        <label for="miCheckbox">Marca esta casilla:</label>
+        <input type="checkbox" id="miCheckbox">
+
+        <br><br>
+
+        <label for="miTextArea">Área de texto (focus/blur):</label>
+        <textarea id="miTextArea" placeholder="Escribe algo..."></textarea>
+
+        <br>
+        <button type="submit">Enviar Formulario</button>
+    </form>
+
+    <hr>
+
+    <h2>Output de Eventos</h2>
+    <div id="area-output">
+        Aquí se mostrará información sobre los eventos disparados...
+    </div>
+
+    <script>
+        // Agregar y eliminar eventos
+        const container = document.querySelector('.caja-eventos');
+        const button = document.querySelector('#miBoton');
+
+        container.addEventListener('mouseover', () => {
+            container.style.backgroundColor = 'blue';
+        });
+
+        container.addEventListener('mouseout', () => {
+            container.style.backgroundColor = '#f0f8ff';
+        });
+
+        const buttonCLickCallBack = () => {
+            alert("Esto es un mensaje por el click 🦧");
+        };
+
+        button.addEventListener('click', buttonCLickCallBack);
+
+        setTimeout(() => {
+            button.removeEventListener('click', buttonCLickCallBack);
+        },2000);
+
+
+        //El objeto EventObject
+
+        const buttonClicked = (event) => {
+            console.log(event);
+            console.log(event.target.textContent);
+            console.log(event.target.id);
+        };
+
+        button.addEventListener('click', buttonClicked);
+
+
+        // Validación formularios e inputs
+
+    </script>
+
+</body>
+</html>
