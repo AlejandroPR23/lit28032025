@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Práctica de Eventos JavaScript</title>
     <style>
-       
         body {
             font-family: sans-serif;
             padding: 20px;
@@ -36,9 +35,9 @@
             padding: 8px 15px;
             cursor: pointer;
         }
-        input[type="text"], textarea, select {
-             padding: 8px;
-             width: 250px;
+        input[type="text"], input[type="email"], textarea, select {
+            padding: 8px;
+            width: 250px;
         }
         textarea {
             height: 60px;
@@ -67,6 +66,12 @@
 
     <h2>Eventos de Formulario</h2>
     <form id="miFormulario">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
         <label for="miSelect">Selecciona una opción:</label>
         <select id="miSelect">
             <option value="">--Elige--</option>
@@ -93,7 +98,7 @@
 
     <h2>Output de Eventos</h2>
     <div id="area-output">
-        Aquí se mostrará información sobre los eventos disparados...
+        
     </div>
 
     <script>
@@ -133,6 +138,13 @@
 
         // Validación formularios e inputs
 
+        const form = document.getElementById('miFormulario');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = form.elements["name"].value;
+            console.log(name);
+        })
     </script>
 
 </body>
