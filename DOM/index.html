@@ -10,11 +10,17 @@
             color: rgb(255, 253, 253);
             font-weight: bold;
         }
-        .visible{
+
+        .visible {
             display: block;
         }
-        .invisible{
+
+        .invisible {
             display: none;
+        }
+
+        .highlight {
+            background-color: darkcyan;
         }
     </style>
 </head>
@@ -47,7 +53,7 @@
         document.querySelector('p');
         document.getElementsByClassName("item");
         document.getElementsByTagName("p");
-        document.querySelectorAll(".item");
+
 
         // Navegar entre nodos
         const parent = document.getElementById('lista');
@@ -83,7 +89,7 @@
         title.innerText = "Ya no hay agua 🍰"
 
         // Modificando estilos
-        
+
         title.style.color = "red";
 
         const menu = document.querySelector('lista');
@@ -143,6 +149,16 @@
         clonNode.innerText = "🦖🦖🦖🦖";
         contentArea.append(clonNode);
         itemToReplace.replaceWith(clonNode);
+
+
+        // Delegación de eventos y prevención de comportamiento predeterminado
+        const listComp = document.querySelector('#lista');
+
+        listComp.addEventListener('click', (event) => {
+            event.target.closest('li').classList.toggle("highlight");
+        })
+
+
     </script>
 </body>
 
